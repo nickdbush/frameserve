@@ -1,0 +1,17 @@
+[package]
+name = "frameserve"
+version = "0.1.0"
+edition = "2024"
+default-run = "cli"
+
+[dependencies]
+axum = "0.8.1"
+base64 = "0.22.1"
+blake3 = { version = "1.8.1", features = ["mmap", "serde"] }
+clap = { version = "4.5.32", features = ["derive"] }
+concat-reader = "0.1.0"
+jiff = "0.2.5"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["arbitrary_precision"] }
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.6.2", features = ["fs", "cors"] }

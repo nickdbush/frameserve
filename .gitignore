@@ -1,0 +1,8 @@
+/target
+/encodes
+/packages
+/segments
+*.log
+*.mbtree
+*.env
+.DS_Store
