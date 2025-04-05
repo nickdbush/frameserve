@@ -1,5 +1,3 @@
-use std::fs;
-
 use crate::inspect::{Codec, FieldOrder, Profile, VideoStreamInfo};
 use clap::ValueEnum;
 use serde::{Deserialize, Serialize};
@@ -150,12 +148,12 @@ pub fn transcode_video(
     info: &VideoStreamInfo,
     pass: Pass,
     outputs: &[Output],
+    audio_dir: &str,
 ) -> CmdBuilder {
     let mut cmd = CmdBuilder::new();
 
     cmd.set("-i", input);
     cmd.set("-map_metadata", "-1");
-    cmd.arg("-an");
 
     let mut filter_graph = FilterGraph::default();
     if info.field_order != FieldOrder::Progressive {
@@ -171,6 +169,13 @@ pub fn transcode_video(
 
     for (i, output) in outputs.iter().enumerate() {
         output.write(&mut cmd, info, StreamRef::new_output(i), pass);
+    }
+
+    if pass == Pass::Second {
+        cmd.set("-map", "0:a");
+        cmd.set("-c:a", "aac_at");
+        cmd.set("-b:a", "192k");
+        with_hls_muxer(&mut cmd, &audio_dir);
     }
 
     cmd
@@ -213,21 +218,21 @@ impl Output {
             cmd.arg("/dev/null");
         } else {
             cmd.set("-pass", "2");
-
-            cmd.set("-f", "hls");
-            cmd.set("-hls_time", GOP_DURATION.to_string());
-            cmd.set("-hls_segment_filename", format!("{}/s%05d.mp4", &self.dir));
-            cmd.set("-hls_segment_type", "fmp4");
-            cmd.set("-hls_list_size", "0");
-
-            cmd.arg(format!("{}/stream.m3u8", &self.dir));
-
-            std::fs::create_dir_all(&self.dir).unwrap();
-
-            let spec_json = serde_json::to_string_pretty(&self.spec).unwrap();
-            fs::write(format!("{}/spec.json", &self.dir), spec_json).unwrap();
+            with_hls_muxer(cmd, &self.dir);
         }
     }
+}
+
+fn with_hls_muxer(cmd: &mut CmdBuilder, out_dir: &str) {
+    cmd.set("-f", "hls");
+    cmd.set("-hls_time", GOP_DURATION.to_string());
+    cmd.set("-hls_segment_filename", format!("{}/s%05d.mp4", out_dir));
+    cmd.set("-hls_segment_type", "fmp4");
+    cmd.set("-hls_list_size", "0");
+
+    cmd.arg(format!("{}/stream.m3u8", out_dir));
+
+    std::fs::create_dir_all(out_dir).unwrap();
 }
 
 #[derive(Default)]
