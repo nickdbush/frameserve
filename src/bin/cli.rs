@@ -32,6 +32,7 @@ enum Command {
     Package {
         dir: String,
     },
+    Clean,
 }
 
 fn main() {
@@ -111,6 +112,10 @@ fn main() {
             fs::create_dir_all("segments").unwrap();
             fs::create_dir_all("packages").unwrap();
             package(&dir, "segments", "packages");
+        }
+        Command::Clean => {
+            let _ = std::fs::remove_dir_all("segments");
+            let _ = std::fs::remove_dir_all("packages");
         }
     }
 }
