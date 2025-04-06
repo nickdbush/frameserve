@@ -1,4 +1,4 @@
-use crate::inspect::{Codec, FieldOrder, Profile, VideoStreamInfo};
+use crate::inspect::{Codec, FieldOrder, Info, Profile, VideoStreamInfo};
 use clap::ValueEnum;
 use serde::{Deserialize, Serialize};
 
@@ -145,36 +145,44 @@ pub enum Pass {
 
 pub fn transcode_video(
     input: &str,
-    info: &VideoStreamInfo,
+    info: &Info,
     pass: Pass,
     outputs: &[Output],
     audio_dir: &str,
 ) -> CmdBuilder {
+    let v = info.video_stream();
+    let a = info.audio_stream();
+
     let mut cmd = CmdBuilder::new();
 
     cmd.set("-i", input);
     cmd.set("-map_metadata", "-1");
 
     let mut filter_graph = FilterGraph::default();
-    if info.field_order != FieldOrder::Progressive {
+    if v.field_order != FieldOrder::Progressive {
         filter_graph.add_global_filter("yadif=1");
     }
-    if info.pix_fmt != "yuv420p" {
+    if v.pix_fmt != "yuv420p" {
         filter_graph.add_global_filter("format=yuv420p");
     }
     for output in outputs {
-        filter_graph.add_output(output.spec.calculate_resize(info));
+        filter_graph.add_output(output.spec.calculate_resize(v));
     }
     filter_graph.write(&mut cmd);
 
     for (i, output) in outputs.iter().enumerate() {
-        output.write(&mut cmd, info, StreamRef::new_output(i), pass);
+        output.write(&mut cmd, v, StreamRef::new_output(i), pass);
     }
 
     if pass == Pass::Second {
         cmd.set("-map", "0:a");
-        cmd.set("-c:a", "aac_at");
-        cmd.set("-b:a", "192k");
+        if a.channels <= 2 && a.bit_rate <= 192000 && a.codec_name == "aac" {
+            cmd.set("-c:a", "copy");
+        } else {
+            cmd.set("-ac", "2");
+            cmd.set("-c:a", "aac_at");
+            cmd.set("-b:a", "192k");
+        }
         with_hls_muxer(&mut cmd, &audio_dir);
     }
 

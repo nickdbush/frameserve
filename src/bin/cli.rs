@@ -76,11 +76,10 @@ fn main() {
                 low_spec.out_dir(&out_dir),
             ];
 
-            let vs = media_info.video_stream();
             let audio_dir = format!("{out_dir}/aac_192k");
 
-            transcode_video(&original, vs, Pass::First, &outputs, &audio_dir).execute();
-            transcode_video(&original, vs, Pass::Second, &outputs, &audio_dir).execute();
+            transcode_video(&original, &media_info, Pass::First, &outputs, &audio_dir).execute();
+            transcode_video(&original, &media_info, Pass::Second, &outputs, &audio_dir).execute();
         }
         Command::Compute { original } => {
             let info = inspect(&original);

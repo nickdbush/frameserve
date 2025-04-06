@@ -1,11 +1,10 @@
-use concat_reader::concat_path;
 use serde::{Deserialize, Deserializer, Serialize};
 use std::fmt::Display;
 use std::fs::File;
+use std::io;
 use std::io::Read;
 use std::process::{Command, Stdio};
 use std::str::FromStr;
-use std::{fs, io};
 
 pub fn inspect(input: &str) -> Info {
     let output = Command::new("ffprobe")
@@ -23,13 +22,6 @@ pub fn inspect(input: &str) -> Info {
 }
 
 pub fn combine_inspect(header: &str, segment: &str) -> Info {
-    // let cat = Command::new("cat")
-    // .arg(header)
-    // .arg(segment)
-    // .stdout(Stdio::piped())
-    // .spawn()
-    // .unwrap();
-
     let mut cmd = Command::new("ffprobe")
         .args(["-v", "quiet", "-print_format", "json", "-show_streams", "-"])
         .stdin(Stdio::piped())
@@ -65,6 +57,15 @@ impl Info {
         for stream in &self.streams {
             if let StreamKind::Video(video) = &stream.kind {
                 return video;
+            }
+        }
+        panic!("no video stream found");
+    }
+
+    pub fn audio_stream(&self) -> &AudioStreamInfo {
+        for stream in &self.streams {
+            if let StreamKind::Audio(audio) = &stream.kind {
+                return audio;
             }
         }
         panic!("no video stream found");
@@ -174,17 +175,30 @@ pub enum FieldOrder {
 
 #[derive(Debug, Deserialize)]
 pub struct AudioStreamInfo {
+    pub codec_name: String,
+    #[serde(deserialize_with = "deserialize_number_from_string")]
+    pub bit_rate: u32,
+    pub start_pts: u64,
+    pub duration_ts: u64,
     #[serde(deserialize_with = "deserialize_number_from_string")]
     pub sample_rate: u32,
     pub channels: u8,
+    #[serde(deserialize_with = "deserialize_ratio_from_string")]
+    pub time_base: Ratio,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
-pub struct Ratio(pub u32, pub u32);
+pub struct Ratio {
+    numerator: u32,
+    denominator: u32,
+}
 
 impl Ratio {
-    pub fn new(num: u32, den: u32) -> Self {
-        Self(num, den)
+    pub fn new(numerator: u32, denominator: u32) -> Self {
+        Self {
+            numerator,
+            denominator,
+        }
     }
 
     pub fn calculate_gop_length(&self, gop_duration: f64) -> u32 {
@@ -193,7 +207,7 @@ impl Ratio {
     }
 
     pub fn as_f64(&self) -> f64 {
-        self.0 as f64 / self.1 as f64
+        self.numerator as f64 / self.denominator as f64
     }
 }
 
@@ -226,5 +240,5 @@ where
         .ok_or_else(|| serde::de::Error::custom("missing /"))?;
     let num = num.parse().map_err(serde::de::Error::custom)?;
     let den = den.parse().map_err(serde::de::Error::custom)?;
-    Ok(Ratio(num, den))
+    Ok(Ratio::new(num, den))
 }
