@@ -1,5 +1,6 @@
 use base64::{Engine as _, engine::general_purpose::URL_SAFE_NO_PAD};
-use serde::Serialize;
+use jiff::Timestamp;
+use serde::{Deserialize, Serialize};
 use std::{ffi::OsStr, fs};
 
 use crate::{
@@ -7,13 +8,15 @@ use crate::{
     utils::extract_vid,
 };
 
-#[derive(Debug, Default, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Package {
+    vid: u32,
+    packaged_at: Timestamp,
     variants: Vec<Variant>,
 }
 
 pub fn package(input_dir: &str, segments_dir: &str, packages_dir: &str) {
-    let mut package = Package::default();
+    let mut variants = Vec::new();
 
     let vid = extract_vid(input_dir);
     fs::create_dir_all(format!("{segments_dir}/{vid}")).unwrap();
@@ -25,7 +28,7 @@ pub fn package(input_dir: &str, segments_dir: &str, packages_dir: &str) {
         }
 
         let (variant, mappings) = package_variant(entry.path().to_str().unwrap());
-        package.variants.push(variant);
+        variants.push(variant);
 
         for Mapping(src, remote) in mappings {
             let dst = format!("{segments_dir}/{vid}/{}", remote.0);
@@ -33,11 +36,16 @@ pub fn package(input_dir: &str, segments_dir: &str, packages_dir: &str) {
         }
     }
 
+    let package = Package {
+        vid,
+        packaged_at: Timestamp::now(),
+        variants,
+    };
     let package_json = serde_json::to_string_pretty(&package).unwrap();
     fs::write(format!("{packages_dir}/{vid}.json"), package_json).unwrap();
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct Variant {
     init_src: RemoteResource,
     time_base: Ratio,
@@ -47,14 +55,14 @@ struct Variant {
     segments: Vec<Segment>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 #[serde(tag = "kind", content = "info", rename_all = "lowercase")]
 enum VariantKind {
     Video { width: u16, height: u16 },
     Audio,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct Segment {
     src: RemoteResource,
     start: u64,
@@ -143,7 +151,7 @@ fn package_variant(variant_dir: &str) -> (Variant, Vec<Mapping>) {
     )
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct RemoteResource(String);
 
 struct Mapping(String, RemoteResource);
