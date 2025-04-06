@@ -1,2 +1,2 @@
 #! /bin/sh
-rclone copy -P segments caveh:media
+rclone copy -P --size-only segments caveh:media
