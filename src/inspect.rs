@@ -1,3 +1,4 @@
+use num::rational::Ratio;
 use serde::{Deserialize, Deserializer, Serialize};
 use std::fmt::Display;
 use std::fs::File;
@@ -118,12 +119,12 @@ pub struct VideoStreamInfo {
     // #[serde(deserialize_with = "deserialize_ratio_from_string")]
     // time_base: Ratio,
     #[serde(deserialize_with = "deserialize_ratio_from_string")]
-    pub r_frame_rate: Ratio,
+    pub r_frame_rate: Ratio<u32>,
     #[serde(deserialize_with = "deserialize_ratio_from_string")]
-    pub avg_frame_rate: Ratio,
+    pub avg_frame_rate: Ratio<u32>,
     pub pix_fmt: String,
     #[serde(deserialize_with = "deserialize_ratio_from_string")]
-    pub time_base: Ratio,
+    pub time_base: Ratio<u32>,
 }
 
 impl VideoStreamInfo {
@@ -184,31 +185,7 @@ pub struct AudioStreamInfo {
     pub sample_rate: u32,
     pub channels: u8,
     #[serde(deserialize_with = "deserialize_ratio_from_string")]
-    pub time_base: Ratio,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
-pub struct Ratio {
-    numerator: u32,
-    denominator: u32,
-}
-
-impl Ratio {
-    pub fn new(numerator: u32, denominator: u32) -> Self {
-        Self {
-            numerator,
-            denominator,
-        }
-    }
-
-    pub fn calculate_gop_length(&self, gop_duration: f64) -> u32 {
-        let gop_frames = self.as_f64() * gop_duration;
-        gop_frames.round() as u32
-    }
-
-    pub fn as_f64(&self) -> f64 {
-        self.numerator as f64 / self.denominator as f64
-    }
+    pub time_base: Ratio<u32>,
 }
 
 pub fn deserialize_number_from_string<'de, T, D>(deserializer: D) -> Result<T, D::Error>
@@ -230,7 +207,7 @@ where
     }
 }
 
-pub fn deserialize_ratio_from_string<'de, D>(deserializer: D) -> Result<Ratio, D::Error>
+pub fn deserialize_ratio_from_string<'de, D>(deserializer: D) -> Result<Ratio<u32>, D::Error>
 where
     D: Deserializer<'de>,
 {

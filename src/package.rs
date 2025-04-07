@@ -1,18 +1,31 @@
 use base64::{Engine as _, engine::general_purpose::URL_SAFE_NO_PAD};
 use jiff::Timestamp;
+use num::rational::Ratio;
 use serde::{Deserialize, Serialize};
-use std::{ffi::OsStr, fs};
+use std::{ffi::OsStr, fmt::Display, fs};
 
-use crate::{
-    inspect::{Ratio, combine_inspect},
-    utils::extract_vid,
-};
+use crate::{inspect::combine_inspect, utils::extract_vid};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Package {
-    vid: u32,
-    packaged_at: Timestamp,
-    variants: Vec<Variant>,
+    pub vid: u32,
+    pub packaged_at: Timestamp,
+    pub variants: Vec<Variant>,
+}
+
+impl Package {
+    pub fn from_file(file: &str) -> Self {
+        let src = fs::read_to_string(file).unwrap();
+        serde_json::from_str::<Self>(&src).unwrap()
+    }
+
+    pub fn base(&self) -> Ratio<u32> {
+        self.variants[0].time_base
+    }
+
+    pub fn duration(&self) -> u64 {
+        self.variants[0].duration()
+    }
 }
 
 pub fn package(input_dir: &str, segments_dir: &str, packages_dir: &str) {
@@ -46,27 +59,39 @@ pub fn package(input_dir: &str, segments_dir: &str, packages_dir: &str) {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct Variant {
-    init_src: RemoteResource,
-    time_base: Ratio,
-    bitrate: u32,
+pub struct Variant {
+    pub init_src: RemoteResource,
+    pub time_base: Ratio<u32>,
+    pub bitrate: u32,
     #[serde(flatten)]
-    kind: VariantKind,
-    segments: Vec<Segment>,
+    pub kind: VariantKind,
+    pub segments: Vec<Segment>,
+}
+
+impl Variant {
+    pub fn duration(&self) -> u64 {
+        self.segments.iter().map(|segment| segment.duration()).sum()
+    }
 }
 
 #[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 #[serde(tag = "kind", content = "info", rename_all = "lowercase")]
-enum VariantKind {
+pub enum VariantKind {
     Video { width: u16, height: u16 },
     Audio,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct Segment {
-    src: RemoteResource,
-    start: u64,
-    duration: u64,
+pub struct Segment {
+    pub src: RemoteResource,
+    pub start: u64,
+    pub duration: u64,
+}
+
+impl Segment {
+    pub fn duration(&self) -> u64 {
+        self.duration
+    }
 }
 
 fn package_variant(variant_dir: &str) -> (Variant, Vec<Mapping>) {
@@ -124,10 +149,10 @@ fn package_variant(variant_dir: &str) -> (Variant, Vec<Mapping>) {
         let info = combine_inspect(&init_path, path);
         let (start, duration) = if is_audio_stream {
             let a = info.audio_stream();
-            (a.start_pts, a.duration_ts - a.start_pts)
+            (a.start_pts, a.duration_ts)
         } else {
             let v = info.video_stream();
-            (v.start_pts, v.duration_ts - v.start_pts)
+            (v.start_pts, v.duration_ts)
         };
 
         segments.push(Segment {
@@ -138,6 +163,12 @@ fn package_variant(variant_dir: &str) -> (Variant, Vec<Mapping>) {
     }
 
     segments.sort_by_key(|s| s.start);
+
+    let offset = segments[0].start;
+    segments.iter_mut().for_each(|segment| {
+        segment.duration -= segment.start;
+        segment.duration += offset;
+    });
 
     (
         Variant {
@@ -152,7 +183,27 @@ fn package_variant(variant_dir: &str) -> (Variant, Vec<Mapping>) {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct RemoteResource(String);
+pub struct RemoteResource(pub String);
+
+impl RemoteResource {
+    pub fn uri(&self, vid: u32) -> ResourceLocator {
+        ResourceLocator {
+            vid,
+            resource: self,
+        }
+    }
+}
+
+pub struct ResourceLocator<'resource> {
+    vid: u32,
+    resource: &'resource RemoteResource,
+}
+
+impl<'a> Display for ResourceLocator<'a> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "/media/{}/{}", self.vid, self.resource.0)
+    }
+}
 
 struct Mapping(String, RemoteResource);
 

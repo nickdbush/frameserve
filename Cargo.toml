@@ -11,6 +11,7 @@ blake3 = { version = "1.8.1", features = ["mmap", "serde"] }
 clap = { version = "4.5.32", features = ["derive"] }
 concat-reader = "0.1.0"
 jiff = { version = "0.2.5", features = ["serde"] }
+num = { version = "0.4.3", features = ["serde"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["arbitrary_precision"] }
 tokio = { version = "1", features = ["full"] }

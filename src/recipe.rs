@@ -1,5 +1,6 @@
 use crate::inspect::{Codec, FieldOrder, Info, Profile, VideoStreamInfo};
 use clap::ValueEnum;
+use num::{ToPrimitive, rational::Ratio};
 use serde::{Deserialize, Serialize};
 
 const GOP_DURATION: f64 = 10.0;
@@ -206,7 +207,7 @@ impl Output {
         cmd.set("-bufsize", (self.spec.bit_rate * 2).to_string());
         cmd.set("-flags", "+cgop");
 
-        let gop = info.avg_frame_rate.calculate_gop_length(GOP_DURATION);
+        let gop = calculate_gop_length(info.avg_frame_rate, GOP_DURATION);
 
         // https://superuser.com/a/1223359
         cmd.set("-force_key_frames", format!("expr:eq(mod(n,{gop}),0)"));
@@ -340,4 +341,9 @@ impl std::fmt::Display for StreamRef {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.0)
     }
+}
+
+fn calculate_gop_length(ratio: Ratio<u32>, gop_duration: f64) -> u32 {
+    let gop_frames = ratio.to_f64().unwrap() * gop_duration;
+    gop_frames.round() as u32
 }
