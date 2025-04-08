@@ -1,0 +1,876 @@
+{
+  "mimeType" : "application\/vnd.apple.mpegurl",
+  "processedSegmentsCount" : 32,
+  "url" : "http:\/\/localhost:3000\/hls\/variant0.m3u8",
+  "hasDiscSequenceTag" : true,
+  "messages" : [
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 26: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/LShgBfqeGZFQoU1BjyyI0lBfeSx4O_37j9GIiCF9i1c.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 26: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/OczStbiEVe-hGsB90GnasDdzySlvL1hLFu0bnVplLso.mp4"
+    },
+    {
+      "errorRequirementLevel" : 4,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 26: [] vs []",
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/0jd-XBCrsEa2Mtpz2sjWct8i9QNiE0kZLvl3i_ch0k4.mp4",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorParserCode" : -12312,
+      "errorRepetitions" : 2,
+      "errorStatusCode" : -12312
+    },
+    {
+      "errorRequirementLevel" : 4,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 27: [] vs []",
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/TFFhwH-N1KGvu1LLTnDAp2pDoNPROsSOMjrdCJCB36I.mp4",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorParserCode" : -12312,
+      "errorRepetitions" : 2,
+      "errorStatusCode" : -12312
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 28: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/YKtav2W9JOT-8AzCrAahlUlyCR0niQNwphK27t2ReWQ.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 26: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/TFFhwH-N1KGvu1LLTnDAp2pDoNPROsSOMjrdCJCB36I.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry time value does not match previous playlist for MEDIA-SEQUENCE 27: 10.010010 vs 9.342676",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/YKtav2W9JOT-8AzCrAahlUlyCR0niQNwphK27t2ReWQ.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 27: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/YKtav2W9JOT-8AzCrAahlUlyCR0niQNwphK27t2ReWQ.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry time value does not match previous playlist for MEDIA-SEQUENCE 28: 9.342676 vs 10.010010",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/3apiGvNF_DsjzhvZFf7V1QesL6pY1l0IO_Kpm0I-mSE.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry discontinuity value does not match previous playlist for MEDIA-SEQUENCE 28",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/3apiGvNF_DsjzhvZFf7V1QesL6pY1l0IO_Kpm0I-mSE.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 28: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/3apiGvNF_DsjzhvZFf7V1QesL6pY1l0IO_Kpm0I-mSE.mp4"
+    },
+    {
+      "errorRequirementLevel" : 4,
+      "errorComment" : "Media Entry discontinuity value does not match previous playlist for MEDIA-SEQUENCE 29",
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/X25miU8M0eSTtCDrb8mgIFJDiViXBgDUXfWoo77srJ0.mp4",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorParserCode" : -12312,
+      "errorRepetitions" : 2,
+      "errorStatusCode" : -12312
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 29: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/X25miU8M0eSTtCDrb8mgIFJDiViXBgDUXfWoo77srJ0.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry time value does not match previous playlist for MEDIA-SEQUENCE 26: 10.010010 vs 9.342676",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/YKtav2W9JOT-8AzCrAahlUlyCR0niQNwphK27t2ReWQ.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 26: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75139010\/YKtav2W9JOT-8AzCrAahlUlyCR0niQNwphK27t2ReWQ.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry discontinuity value does not match previous playlist for MEDIA-SEQUENCE 27",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/3apiGvNF_DsjzhvZFf7V1QesL6pY1l0IO_Kpm0I-mSE.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 27: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/3apiGvNF_DsjzhvZFf7V1QesL6pY1l0IO_Kpm0I-mSE.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry time value does not match previous playlist for MEDIA-SEQUENCE 28: 9.342676 vs 10.010010",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/X25miU8M0eSTtCDrb8mgIFJDiViXBgDUXfWoo77srJ0.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 28: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/X25miU8M0eSTtCDrb8mgIFJDiViXBgDUXfWoo77srJ0.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry discontinuity value does not match previous playlist for MEDIA-SEQUENCE 29",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/DESBMczVrhLZWqA2828Ymjt8dQw-nKK3EWi-VIKLCSk.mp4"
+    },
+    {
+      "errorParserCode" : -12312,
+      "errorComment" : "Media Entry URL not match previous playlist for MEDIA-SEQUENCE 29: [] vs []",
+      "errorDomain" : "CoreMediaErrorDomain",
+      "errorStatusCode" : -12312,
+      "errorRequirementLevel" : 4,
+      "errorParserLine" : "http:\/\/localhost:3000\/media\/75140282\/DESBMczVrhLZWqA2828Ymjt8dQw-nKK3EWi-VIKLCSk.mp4"
+    }
+  ],
+  "meanSegmentCount" : 20,
+  "measuredMeanBitrate" : 3927813,
+  "parsedSegmentsCount" : 32,
+  "fetchCount" : 19,
+  "hasEndTag" : false,
+  "validatorTimestamp" : "2025-04-08T19:55:14.766+01:00",
+  "validatorVersion" : "1.24.5 (686.23b-241115)",
+  "meanTotalDuration" : 197.07426705263134,
+  "measuredMaxBitrate" : 5450785,
+  "independentSegments" : false,
+  "iframeOnly" : false,
+  "playlistKind" : "media",
+  "validatorName" : "mediastreamvalidator",
+  "sslContentDeliveredSecurely" : false,
+  "discontinuities" : [
+    {
+      "segments" : [
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 0,
+          "mimeType" : "video\/mp4",
+          "dataID" : 1,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/3apiGvNF_DsjzhvZFf7V1QesL6pY1l0IO_Kpm0I-mSE.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 0.033366700033366697,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 0,
+          "discontinuityDomain" : 0
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 1,
+          "mimeType" : "video\/mp4",
+          "dataID" : 3,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/X25miU8M0eSTtCDrb8mgIFJDiViXBgDUXfWoo77srJ0.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 10.043376710043377,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 10.01001001001001,
+          "discontinuityDomain" : 0
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 2,
+          "mimeType" : "video\/mp4",
+          "dataID" : 4,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/DESBMczVrhLZWqA2828Ymjt8dQw-nKK3EWi-VIKLCSk.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 20.053386720053386,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 20.02002002002002,
+          "discontinuityDomain" : 0
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 3,
+          "mimeType" : "video\/mp4",
+          "dataID" : 5,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/vbM0sGb8yD10-qtuW5IyGfsKF0gXCSWJK41O00mkKWI.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 30.063396730063396,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 30.03003003003003,
+          "discontinuityDomain" : 0
+        },
+        {
+          "segmentDurationTag" : 8.6753420000000006,
+          "mediaSequence" : 4,
+          "mimeType" : "video\/mp4",
+          "dataID" : 6,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/ISZ0idFVZnoI9HhlPbJ_hxqdTBj97i1A3S8uc8drjGg.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 40.073406740073409,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 40.04004004004004,
+          "discontinuityDomain" : 0
+        }
+      ],
+      "measurements" : {
+        "measuredMaxBitrate" : 5328088,
+        "measuredMeanBitrate" : 3565648,
+        "measuredSegments" : 5
+      },
+      "tracks" : [
+        {
+          "trackVideoIDRStandardDeviation" : 0,
+          "trackId" : 1,
+          "trackVideoWidth" : 640,
+          "trackVideoLevel" : 31,
+          "trackVideoTransferFunction" : "ITU_R_709_2",
+          "trackVideoHeight" : 480,
+          "trackMediaType" : "vide",
+          "trackVideoIDRInterval" : 5.005005005005005,
+          "trackVideoIsInterlaced" : false,
+          "trackVideoProfile" : 100,
+          "trackMediaSubType" : "avc1"
+        }
+      ]
+    },
+    {
+      "segments" : [
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 5,
+          "mimeType" : "video\/mp4",
+          "dataID" : 7,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/8zXaOi9EB98lBV8saXwf_FG-6HrtIGKJpvRh36-yMOU.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 0.033366700033366697,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 0,
+          "discontinuityDomain" : 1
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 6,
+          "mimeType" : "video\/mp4",
+          "dataID" : 9,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/dIqOYiuCDbaK0N2AzzxI1BcZb-pdnUikQh5yQmnFNFI.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 10.043376710043377,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 10.01001001001001,
+          "discontinuityDomain" : 1
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 7,
+          "mimeType" : "video\/mp4",
+          "dataID" : 10,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/rB6BNnCmMAuUxMNGbNWV_tNDvWDEkK8KLA3HXmzVXs0.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 20.053386720053386,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 20.02002002002002,
+          "discontinuityDomain" : 1
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 8,
+          "mimeType" : "video\/mp4",
+          "dataID" : 11,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/LShgBfqeGZFQoU1BjyyI0lBfeSx4O_37j9GIiCF9i1c.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 30.063396730063396,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 30.03003003003003,
+          "discontinuityDomain" : 1
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 9,
+          "mimeType" : "video\/mp4",
+          "dataID" : 12,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/OczStbiEVe-hGsB90GnasDdzySlvL1hLFu0bnVplLso.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 40.073406740073409,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 40.04004004004004,
+          "discontinuityDomain" : 1
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 10,
+          "mimeType" : "video\/mp4",
+          "dataID" : 13,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/0jd-XBCrsEa2Mtpz2sjWct8i9QNiE0kZLvl3i_ch0k4.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 50.083416750083416,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 50.050050050050054,
+          "discontinuityDomain" : 1
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 11,
+          "mimeType" : "video\/mp4",
+          "dataID" : 14,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/TFFhwH-N1KGvu1LLTnDAp2pDoNPROsSOMjrdCJCB36I.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 60.093426760093429,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 60.06006006006006,
+          "discontinuityDomain" : 1
+        },
+        {
+          "segmentDurationTag" : 9.3426760000000009,
+          "mediaSequence" : 12,
+          "mimeType" : "video\/mp4",
+          "dataID" : 15,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/YKtav2W9JOT-8AzCrAahlUlyCR0niQNwphK27t2ReWQ.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 70.103436770103443,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 70.070070070070074,
+          "discontinuityDomain" : 1
+        }
+      ],
+      "measurements" : {
+        "measuredMaxBitrate" : 5450785,
+        "measuredMeanBitrate" : 4149611,
+        "measuredSegments" : 8
+      },
+      "tracks" : [
+        {
+          "trackVideoIDRStandardDeviation" : 0,
+          "trackId" : 1,
+          "trackVideoWidth" : 640,
+          "trackVideoLevel" : 31,
+          "trackVideoTransferFunction" : "ITU_R_709_2",
+          "trackVideoHeight" : 480,
+          "trackMediaType" : "vide",
+          "trackVideoIDRInterval" : 5.005005005005005,
+          "trackVideoIsInterlaced" : false,
+          "trackVideoProfile" : 100,
+          "trackMediaSubType" : "avc1"
+        }
+      ]
+    },
+    {
+      "segments" : [
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 13,
+          "mimeType" : "video\/mp4",
+          "dataID" : 16,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/3apiGvNF_DsjzhvZFf7V1QesL6pY1l0IO_Kpm0I-mSE.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 0.033366700033366697,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 0,
+          "discontinuityDomain" : 2
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 14,
+          "mimeType" : "video\/mp4",
+          "dataID" : 17,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/X25miU8M0eSTtCDrb8mgIFJDiViXBgDUXfWoo77srJ0.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 10.043376710043377,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 10.01001001001001,
+          "discontinuityDomain" : 2
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 15,
+          "mimeType" : "video\/mp4",
+          "dataID" : 18,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/DESBMczVrhLZWqA2828Ymjt8dQw-nKK3EWi-VIKLCSk.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 20.053386720053386,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 20.02002002002002,
+          "discontinuityDomain" : 2
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 16,
+          "mimeType" : "video\/mp4",
+          "dataID" : 19,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/vbM0sGb8yD10-qtuW5IyGfsKF0gXCSWJK41O00mkKWI.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 30.063396730063396,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 30.03003003003003,
+          "discontinuityDomain" : 2
+        },
+        {
+          "segmentDurationTag" : 8.6753420000000006,
+          "mediaSequence" : 17,
+          "mimeType" : "video\/mp4",
+          "dataID" : 20,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/ISZ0idFVZnoI9HhlPbJ_hxqdTBj97i1A3S8uc8drjGg.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 40.073406740073409,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 40.04004004004004,
+          "discontinuityDomain" : 2
+        }
+      ],
+      "measurements" : {
+        "measuredMaxBitrate" : 5328088,
+        "measuredMeanBitrate" : 3565648,
+        "measuredSegments" : 5
+      },
+      "tracks" : [
+        {
+          "trackVideoIDRStandardDeviation" : 0,
+          "trackId" : 1,
+          "trackVideoWidth" : 640,
+          "trackVideoLevel" : 31,
+          "trackVideoTransferFunction" : "ITU_R_709_2",
+          "trackVideoHeight" : 480,
+          "trackMediaType" : "vide",
+          "trackVideoIDRInterval" : 5.005005005005005,
+          "trackVideoIsInterlaced" : false,
+          "trackVideoProfile" : 100,
+          "trackMediaSubType" : "avc1"
+        }
+      ]
+    },
+    {
+      "segments" : [
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 18,
+          "mimeType" : "video\/mp4",
+          "dataID" : 21,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/8zXaOi9EB98lBV8saXwf_FG-6HrtIGKJpvRh36-yMOU.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 0.033366700033366697,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 0,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 19,
+          "mimeType" : "video\/mp4",
+          "dataID" : 22,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/dIqOYiuCDbaK0N2AzzxI1BcZb-pdnUikQh5yQmnFNFI.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 10.043376710043377,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 10.01001001001001,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 20,
+          "mimeType" : "video\/mp4",
+          "dataID" : 23,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/rB6BNnCmMAuUxMNGbNWV_tNDvWDEkK8KLA3HXmzVXs0.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 20.053386720053386,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 20.02002002002002,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 21,
+          "mimeType" : "video\/mp4",
+          "dataID" : 24,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/LShgBfqeGZFQoU1BjyyI0lBfeSx4O_37j9GIiCF9i1c.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 30.063396730063396,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 30.03003003003003,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 22,
+          "mimeType" : "video\/mp4",
+          "dataID" : 25,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/OczStbiEVe-hGsB90GnasDdzySlvL1hLFu0bnVplLso.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 40.073406740073409,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 40.04004004004004,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 23,
+          "mimeType" : "video\/mp4",
+          "dataID" : 26,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/0jd-XBCrsEa2Mtpz2sjWct8i9QNiE0kZLvl3i_ch0k4.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 50.083416750083416,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 50.050050050050054,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 24,
+          "mimeType" : "video\/mp4",
+          "dataID" : 27,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/TFFhwH-N1KGvu1LLTnDAp2pDoNPROsSOMjrdCJCB36I.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 60.093426760093429,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 60.06006006006006,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 9.3426760000000009,
+          "mediaSequence" : 25,
+          "mimeType" : "video\/mp4",
+          "dataID" : 28,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/YKtav2W9JOT-8AzCrAahlUlyCR0niQNwphK27t2ReWQ.mp4",
+          "segmentByteRangeLength" : 0,
+          "messages" : [
+            {
+              "errorComment" : "Playlist vs segment duration mismatch",
+              "errorDomain" : "ValidatorErrorDomain",
+              "errorStatusCode" : -50060,
+              "errorRequirementLevel" : 1,
+              "errorDetail" : "Segment duration -50.0501, Playlist duration: 9.3427"
+            }
+          ],
+          "videoStartsWithIDR" : true,
+          "segmentByteRangeOffset" : 0,
+          "sslContentDeliveredSecurely" : false,
+          "presentationTime" : 70.103436770103443,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 70.070070070070074,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 26,
+          "mimeType" : "video\/mp4",
+          "dataID" : 29,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/rB6BNnCmMAuUxMNGbNWV_tNDvWDEkK8KLA3HXmzVXs0.mp4",
+          "segmentByteRangeLength" : 0,
+          "messages" : [
+            {
+              "errorComment" : "Playlist vs segment duration mismatch",
+              "errorDomain" : "ValidatorErrorDomain",
+              "errorStatusCode" : -50060,
+              "errorRequirementLevel" : 1,
+              "errorDetail" : "Segment duration 20.0200, Playlist duration: 10.0100"
+            }
+          ],
+          "videoStartsWithIDR" : true,
+          "segmentByteRangeOffset" : 0,
+          "sslContentDeliveredSecurely" : false,
+          "presentationTime" : 20.053386720053386,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 20.02002002002002,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 27,
+          "mimeType" : "video\/mp4",
+          "dataID" : 30,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/OczStbiEVe-hGsB90GnasDdzySlvL1hLFu0bnVplLso.mp4",
+          "segmentByteRangeLength" : 0,
+          "messages" : [
+            {
+              "errorComment" : "Playlist vs segment duration mismatch",
+              "errorDomain" : "ValidatorErrorDomain",
+              "errorStatusCode" : -50060,
+              "errorRequirementLevel" : 1,
+              "errorDetail" : "Segment duration 20.0200, Playlist duration: 10.0100"
+            }
+          ],
+          "videoStartsWithIDR" : true,
+          "segmentByteRangeOffset" : 0,
+          "sslContentDeliveredSecurely" : false,
+          "presentationTime" : 40.073406740073409,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 40.04004004004004,
+          "discontinuityDomain" : 3
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 28,
+          "mimeType" : "video\/mp4",
+          "dataID" : 31,
+          "url" : "http:\/\/localhost:3000\/media\/75139010\/TFFhwH-N1KGvu1LLTnDAp2pDoNPROsSOMjrdCJCB36I.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 60.093426760093429,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 60.06006006006006,
+          "discontinuityDomain" : 3
+        }
+      ],
+      "measurements" : {
+        "measuredMaxBitrate" : 5450785,
+        "measuredMeanBitrate" : 4441833,
+        "measuredSegments" : 11
+      },
+      "tracks" : [
+        {
+          "trackVideoIDRStandardDeviation" : 3.0030030030030028,
+          "trackId" : 1,
+          "trackVideoWidth" : 640,
+          "trackVideoLevel" : 31,
+          "trackVideoTransferFunction" : "ITU_R_709_2",
+          "trackVideoHeight" : 480,
+          "trackMediaType" : "vide",
+          "trackVideoIDRInterval" : 6.0060060060060056,
+          "trackVideoIsInterlaced" : false,
+          "trackVideoProfile" : 100,
+          "trackMediaSubType" : "avc1"
+        }
+      ]
+    },
+    {
+      "segments" : [
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 29,
+          "mimeType" : "video\/mp4",
+          "dataID" : 32,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/3apiGvNF_DsjzhvZFf7V1QesL6pY1l0IO_Kpm0I-mSE.mp4",
+          "segmentByteRangeLength" : 0,
+          "messages" : [
+            {
+              "errorComment" : "Playlist vs segment duration mismatch",
+              "errorDomain" : "ValidatorErrorDomain",
+              "errorStatusCode" : -50060,
+              "errorRequirementLevel" : 1,
+              "errorDetail" : "Segment duration 20.0200, Playlist duration: 10.0100"
+            }
+          ],
+          "videoStartsWithIDR" : true,
+          "segmentByteRangeOffset" : 0,
+          "sslContentDeliveredSecurely" : false,
+          "presentationTime" : 0.033366700033366697,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 0,
+          "discontinuityDomain" : 4
+        },
+        {
+          "segmentDurationTag" : 10.010009999999999,
+          "mediaSequence" : 30,
+          "mimeType" : "video\/mp4",
+          "dataID" : 33,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/DESBMczVrhLZWqA2828Ymjt8dQw-nKK3EWi-VIKLCSk.mp4",
+          "segmentByteRangeLength" : 0,
+          "messages" : [
+            {
+              "errorComment" : "Playlist vs segment duration mismatch",
+              "errorDomain" : "ValidatorErrorDomain",
+              "errorStatusCode" : -50060,
+              "errorRequirementLevel" : 1,
+              "errorDetail" : "Segment duration 20.0200, Playlist duration: 10.0100"
+            }
+          ],
+          "videoStartsWithIDR" : true,
+          "segmentByteRangeOffset" : 0,
+          "sslContentDeliveredSecurely" : false,
+          "presentationTime" : 20.053386720053386,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 20.02002002002002,
+          "discontinuityDomain" : 4
+        },
+        {
+          "segmentDurationTag" : 8.6753420000000006,
+          "mediaSequence" : 31,
+          "mimeType" : "video\/mp4",
+          "dataID" : 34,
+          "url" : "http:\/\/localhost:3000\/media\/75140282\/ISZ0idFVZnoI9HhlPbJ_hxqdTBj97i1A3S8uc8drjGg.mp4",
+          "segmentByteRangeLength" : 0,
+          "videoStartsWithIDR" : true,
+          "sslContentDeliveredSecurely" : false,
+          "segmentByteRangeOffset" : 0,
+          "presentationTime" : 40.073406740073409,
+          "format" : "fragmentedMP4",
+          "videoFrameRate" : 59.939999999999998,
+          "startTime" : 40.04004004004004,
+          "discontinuityDomain" : 4
+        }
+      ],
+      "measurements" : {
+        "measuredMaxBitrate" : 5328088,
+        "measuredMeanBitrate" : 2583223,
+        "measuredSegments" : 3
+      },
+      "tracks" : [
+        {
+          "trackVideoIDRStandardDeviation" : 4.9038833689352916,
+          "trackId" : 1,
+          "trackVideoWidth" : 640,
+          "trackVideoLevel" : 31,
+          "trackVideoTransferFunction" : "ITU_R_709_2",
+          "trackVideoHeight" : 480,
+          "trackMediaType" : "vide",
+          "trackVideoIDRInterval" : 9.0090090090090094,
+          "trackVideoIsInterlaced" : false,
+          "trackVideoProfile" : 100,
+          "trackMediaSubType" : "avc1"
+        }
+      ]
+    }
+  ],
+  "playlistTargetDuration" : 10,
+  "dataVersion" : 1.2,
+  "gzipEncoded" : false,
+  "dataID" : 0
+}

@@ -4,7 +4,7 @@ use num::rational::Ratio;
 use serde::{Deserialize, Serialize};
 use std::{ffi::OsStr, fmt::Display, fs};
 
-use crate::{config::get_config, inspect::combine_inspect, utils::extract_vid};
+use crate::{inspect::combine_inspect, utils::extract_vid};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Package {

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+	<style>
+		body {
+			font: 12px/18px "Lucida Grande", Arial, Verdana, sans-serif;
+			background-color: #fff;
+			color: #333;
+		}
+
+		h2 {
+		    color: maroon;
+		    font-size: 16px;
+		}
+		
+		span.suffix {
+		    font-size: 14px;
+		}
+
+		h3 {
+		    color: maroon;
+		}
+
+		p.legend {
+			color: #2F4F4F;
+			padding-top: 0px;
+	    	padding-bottom: 0px;
+		    margin-top: 2px;
+			margin-bottom: 2px;
+		}
+
+		p.header {
+			margin-bottom: 2px;
+		}
+
+		p.desc {
+			font-style: italic;
+		    margin-top: 6px;
+			margin-bottom: 6px;
+		}
+
+		table.dur_table {
+			border-top: 1px solid #cdd0d4;
+			border-bottom: 1px solid #cdd0d4;
+			border-collapse: collapse;
+		}
+
+		tr.highlight {
+			background: #f3f3f3;
+		}
+
+		table.variants, table.meta {
+		    border-top: 1px solid #cdd0d4;
+			border-bottom: 1px solid #cdd0d4;
+			border-collapse: collapse;
+		}
+
+		td, th {
+		    padding-left: 6px;
+		    padding-right: 6px;
+		    text-align: right;
+		}
+
+		th {
+			text-align: left;
+			word-wrap: break-word;
+		}
+		td.error, th.error {
+		    padding-left: 6px;
+		    padding-right: 6px;
+		    text-align: right;
+		}
+
+		td.center, th.center {
+			text-align: center;
+		}
+
+		td.agroup, th.agroup {
+			width: 54px;
+		}
+
+		th.left, td.left {
+			padding-left: 10px;
+		    padding-right: 10px;
+		    text-align: left;
+		}
+
+		th.meta {
+			text-align: center;
+		}
+		
+		td.meta {
+			border-bottom: 1px solid #cdd0d4;
+		}
+
+		.idCircle {
+		    border-radius: 20%;
+		    padding: 1px;
+
+		    background: #606060;
+		    border: 1px solid #606060;
+		    color: #fff;
+		    text-align: center;
+		}
+
+		button {
+			border-style: solid;
+			border-color: lightskyblue;
+			border-radius: 8px;
+			margin-left: 6px;
+			vertical-align: middle;
+			background-color:lightblue;
+			padding:2px 6px;
+		}
+
+	</style>
+
+<script>
+function toggleSection(name) {
+	var x = document.getElementById(name);
+	if (x.style.display === "none") {
+		x.style.display = "block";
+		event.target.innerHTML = "Hide";
+	} else {
+		x.style.display = "none";
+		event.target.innerHTML = "Show";
+	}
+}
+</script>
+
+</head>
+<body>
+    <h2 id="top">HLS Validation Report<span class="suffix"> (General, tvOS, iOS, macOS, visionOS, AirPlay 2)</span></h2>
+    <p>Stream type: LIVE</p>
+    <p><a href="http://localhost:3000/hls/variant0.m3u8">http://localhost:3000/hls/variant0.m3u8</a></p>
+    <h3>Variant Overview</h3>
+<table class="variants">
+  <tr>
+   <th class="agroup">Audio ID</th>
+   <th class="center">#</th>
+   <th>Max Rate</th>
+   <th>% Diff.</th>
+   <th>Avg Rate</th>
+   <th>Resolution</th>
+   <th>IDR Int.</th>
+   <th>Framerate</th>
+   <th>Codec</th>
+   <th>Profile</th>
+   <th>Level</th>
+   <th>Encryption</th>
+   <th>Avg Seg Count</th>
+   <th>Avg PL Duration</th>
+  </tr>
+  <tr>
+    <td>NONE</td>
+    <td class="center">1</td>
+    <td>5451</td>
+    <td>-</td>
+    <td>3928</td>
+    <td>640 x 480</td>
+    <td>5.718</td>
+    <td>59.940</td>
+    <td>AVC</td>
+    <td>High</td>
+    <td>3.1</td>
+    <td>-</td>
+    <td>20.00</td>
+    <td>0:03:17</td>
+  </tr>
+</table>
+    <p class="legend">Average duration processed: 0:05:14</p>
+    <h3>Checked against <em>HLS Authoring Specification for Apple Devices</em></h3>
+    <h2>General requirements</h2>
+    <h3>Critical Must Fix Issues</h3>
+    <h4>1. Media Entry URL not match previous playlist for MEDIA-SEQUENCE ...</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>2. Media Entry URL not match previous playlist for MEDIA-SEQUENCE 26: [] vs []</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>3. Media Entry URL not match previous playlist for MEDIA-SEQUENCE 27: [] vs []</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>4. Media Entry URL not match previous playlist for MEDIA-SEQUENCE 28: [] vs []</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>5. Media Entry URL not match previous playlist for MEDIA-SEQUENCE 29: [] vs []</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>6. Media Entry discontinuity value does not match previous playlist for MEDIA-SEQUENCE 27</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>7. Media Entry discontinuity value does not match previous playlist for MEDIA-SEQUENCE 28</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>8. Media Entry discontinuity value does not match previous playlist for MEDIA-SEQUENCE 29</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>9. Media Entry time value does not match previous playlist for MEDIA-SEQUENCE ...</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>10. Media Entry time value does not match previous playlist for MEDIA-SEQUENCE 26: 10.010010 vs 9.342676</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>11. Media Entry time value does not match previous playlist for MEDIA-SEQUENCE 27: 10.010010 vs 9.342676</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>12. Media Entry time value does not match previous playlist for MEDIA-SEQUENCE 28: 9.342676 vs 10.010010</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h3>Must Fix Issues</h3>
+    <h4>13. (Segment) Playlist vs segment duration mismatch</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>14. The EXT-X-PROGRAM-DATE-TIME tag MUST be present in every live/linear media playlist</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>15. If EXT-X-INDEPENDENT-SEGMENTS is not in the multivariant playlist, then you MUST use the EXT-X-INDEPENDENT-SEGMENTS tag in all video media playlists</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>16. The server MUST deliver playlists using gzip content-encoding</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h3>Should Fix Issues</h3>
+    <h4>17. Top-level playlist is not a multivariant playlist.</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>18. Key frames (IDRs) SHOULD be present every two seconds</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>19. You SHOULD provide at least 15 minutes of content in a live/linear playlist</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>20. You SHOULD support stream failover</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>21. Media playlists SHOULD be delivered using TLS</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>22. Media segments SHOULD be delivered over TLS</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>23. Target durations SHOULD be 6 seconds.</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h4>24. Playlists with windows longer than two minutes SHOULD offer Playlist Delta Updates</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h2>Additional requirements for tvOS</h2>
+    <h3>Should Fix Issues</h3>
+    <h4>25. You SHOULD provide at least 120 minutes of content in a live/linear playlist</h4>
+<ul style="list-style-type:disc">
+<li>Variant #1</li>
+</ul>
+    <h3>Report Information</h3>
+<table>
+  <tr>
+    <td>MediaStreamValidator version:</td>
+    <td class="left">1.24.5 (686.23b-241115)</td>
+  </tr>
+  <tr>
+    <td>Report generator version:</td>
+    <td class="left">1.24.5 (686.23b-241115)</td>
+  </tr>
+  <tr>
+    <td>Report generation date:</td>
+    <td class="left">04/08/25 19:55:24</td>
+  </tr>
+  <tr>
+    <td>JSON format version:</td>
+    <td class="left">1.2</td>
+  </tr>
+  <tr>
+    <td>JSON data timestamp:</td>
+    <td class="left">04/08/25 19:55:14</td>
+  </tr>
+</table>
+<hr/>
+    <p class="legend">Note on tables: all bitrates are expressed in kb/s, IDs for default startup variants are highlighted in dark grey, entries annotated with an asterisk ('*') do not have a consistent value over the entire stream, entries in parentheses are from the multivariant playlist rather than media.</p>
+</body>
+</html>

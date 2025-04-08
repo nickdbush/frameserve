@@ -6,19 +6,15 @@ use std::{
 };
 
 use jiff::Unit;
-use num::{integer::lcm, rational::Ratio};
+use num::{Integer, integer::lcm, rational::Ratio};
 
 use crate::{
     config::get_config,
-    package::{Package, RemoteResource, Segment, Variant, VariantKind},
+    package::{Package, RemoteResource, Segment, VariantKind},
 };
 
 pub struct Playlist {
-    packages: Vec<Package>,
-    /// Uses the end time of the segment to quickly find the current segment.
-    segments: BTreeMap<Duration, SegmentInfo>,
     pub streams: [Stream; 4],
-    duration: Duration,
     step_size: StepSize,
     start: jiff::Timestamp,
 }
@@ -36,47 +32,65 @@ impl Playlist {
 
         let step_size = StepSize::calculate(packages.iter().map(|package| package.base()));
 
-        let mut segment_info = BTreeMap::new();
-        let mut end_duration = Duration::zero();
-        packages
-            .iter()
-            .enumerate()
-            .flat_map(|(package_i, package)| {
-                package.variants[0]
-                    .segments
-                    .iter()
-                    .enumerate()
-                    .map(move |(segment_i, segment)| {
-                        let duration = Duration::new(segment.duration, package.base(), step_size);
-                        SegmentInfo {
-                            package_i,
-                            segment_i,
-                            duration,
-                        }
-                    })
-            })
-            .for_each(|segment| {
-                end_duration = end_duration.add(segment.duration);
-                segment_info.insert(end_duration, segment);
-            });
-
         let mut streams = [
             Stream::new_video(1920, 1080, 5000000),
             Stream::new_video(1280, 720, 1500000),
             Stream::new_video(960, 540, 400000),
             Stream::new_audio(192000),
         ];
-        for package in &packages {
-            for stream in &mut streams {
-                stream.add_best_match(&package.variants);
+
+        for (package_i, package) in packages.iter().enumerate() {
+            for variant in &package.variants {
+                let stream = streams
+                    .iter_mut()
+                    .find(|stream| stream.bitrate >= variant.bitrate && stream.kind == variant.kind)
+                    .unwrap();
+
+                stream.inits.push(variant.init_src.clone());
+                stream.vids.push(package.vid);
+
+                let start_idx = stream.segments.len();
+                stream.segments.extend_from_slice(&variant.segments);
+
+                for (segment_i, segment) in variant.segments.iter().enumerate() {
+                    let flat_segment_i = start_idx + segment_i;
+                    stream.positions.push(Position {
+                        package_index: package_i as u64,
+                        segment_index: segment_i as u64,
+                        flat_segment_index: flat_segment_i as u64,
+                    });
+
+                    let segment_duration =
+                        Duration::new(segment.duration, package.base(), step_size);
+                    stream.durations.push(segment_duration);
+
+                    stream.duration = stream.duration.add(segment_duration);
+                    stream
+                        .time_index
+                        .insert(stream.duration, stream.positions.len() - 1);
+                }
             }
         }
 
+        for stream in &streams {
+            if stream.kind == VariantKind::Audio {
+                continue;
+            }
+            assert_eq!(stream.duration, streams[0].duration);
+            assert_eq!(stream.inits.len(), packages.len());
+
+            let total_segments = packages
+                .iter()
+                .map(|package| package.variants[0].segments.len())
+                .sum::<usize>();
+            assert_eq!(stream.time_index.len(), total_segments);
+            assert_eq!(stream.segments.len(), total_segments);
+            assert_eq!(stream.durations.len(), total_segments);
+            assert_eq!(stream.positions.len(), total_segments);
+        }
+
         Self {
-            packages,
-            segments: segment_info,
             streams,
-            duration: end_duration,
             step_size,
             start,
         }
@@ -88,55 +102,54 @@ impl Playlist {
         let diff = ts.since(self.start).unwrap().total(Unit::Second).unwrap() as u64;
         Duration::new(diff, Ratio::ONE, self.step_size)
     }
-
-    fn queue(&self, now: jiff::Timestamp) -> impl Iterator<Item = &SegmentInfo> {
-        let offset = self.duration_from_ts(now).modulo(self.duration);
-        self.segments
-            .range(offset..)
-            .map(|(_, segment)| segment)
-            .chain(self.segments.values().cycle())
-    }
-}
-
-pub struct SegmentInfo {
-    package_i: usize,
-    segment_i: usize,
-    duration: Duration,
 }
 
 pub struct Stream {
+    duration: Duration,
     kind: VariantKind,
     bitrate: u32,
     inits: Vec<RemoteResource>,
     segments: Vec<Segment>,
+    time_index: BTreeMap<Duration, usize>,
+    positions: Vec<Position>,
+    vids: Vec<u32>,
+    durations: Vec<Duration>,
+}
+
+#[derive(Clone, Copy)]
+struct Position {
+    package_index: u64,
+    segment_index: u64,
+    flat_segment_index: u64,
 }
 
 impl Stream {
     fn new_video(width: u16, height: u16, bitrate: u32) -> Self {
         Self {
+            duration: Duration::zero(),
             kind: VariantKind::Video { width, height },
             bitrate,
             inits: Vec::default(),
             segments: Vec::default(),
+            time_index: BTreeMap::default(),
+            positions: Vec::default(),
+            vids: Vec::default(),
+            durations: Vec::default(),
         }
     }
 
     fn new_audio(bitrate: u32) -> Self {
         Self {
+            duration: Duration::zero(),
             kind: VariantKind::Audio,
             bitrate,
             inits: Vec::default(),
             segments: Vec::default(),
+            time_index: BTreeMap::default(),
+            positions: Vec::default(),
+            vids: Vec::default(),
+            durations: Vec::default(),
         }
-    }
-
-    fn add_best_match(&mut self, variants: &[Variant]) {
-        let variant = variants
-            .iter()
-            .find(|variant| variant.kind == self.kind && variant.bitrate == self.bitrate)
-            .unwrap();
-        self.inits.push(variant.init_src.clone());
-        self.segments.extend_from_slice(&variant.segments);
     }
 }
 
@@ -169,6 +182,24 @@ impl Playlist {
 }
 
 impl Stream {
+    fn current_position(&self, playlist: &Playlist, ts: jiff::Timestamp) -> (u64, Position) {
+        let offset_from_start = playlist.duration_from_ts(ts);
+        let (loop_index, offset_in_stream) = offset_from_start.modulo(self.duration);
+        let (_, position_index) = self.time_index.range(offset_in_stream..).next().unwrap();
+        let position = self.positions[*position_index];
+        (loop_index, position)
+    }
+
+    fn discontinuity_count(&self, loop_index: u64, package_index: u64) -> u64 {
+        let packages_in_loop = self.inits.len() as u64;
+        (loop_index * packages_in_loop) + package_index
+    }
+
+    fn segment_count(&self, loop_index: u64, flat_segment_index: u64) -> u64 {
+        let segments_in_loop = self.segments.len() as u64;
+        (loop_index * segments_in_loop) + flat_segment_index
+    }
+
     pub fn variant_playlist(
         &self,
         playlist: &Playlist,
@@ -177,28 +208,41 @@ impl Stream {
     ) -> fmt::Result {
         let config = get_config();
 
+        let (loop_index, current_position) = self.current_position(playlist, now);
+
+        let discontinuities = self.discontinuity_count(loop_index, current_position.package_index);
+        let segment_count = self.segment_count(loop_index, current_position.flat_segment_index);
+
         writeln!(out, "#EXTM3U")?;
+        writeln!(out, "#EXT-X-VERSION:7")?;
         writeln!(out, "#EXT-X-TARGETDURATION:10")?;
-        writeln!(out, "#EXT-X-VERSION:4")?;
-        writeln!(out, "#EXT-X-MEDIA-SEQUENCE:1")?;
+        writeln!(out, "#EXT-X-MEDIA-SEQUENCE:{segment_count}")?;
+        writeln!(out, "#EXT-X-DISCONTINUITY-SEQUENCE:{discontinuities}")?;
 
-        for (i, segment_info) in playlist.queue(now).take(20).enumerate() {
-            let package = &playlist.packages[segment_info.package_i];
-            let segment = &self.segments[segment_info.segment_i];
-            let init = &self.inits[segment_info.package_i];
+        let queue = self.positions[(current_position.flat_segment_index as usize)..]
+            .iter()
+            .chain(self.positions.iter().cycle())
+            .take(10);
 
-            if segment_info.segment_i == 0 {
+        for (i, position) in queue.enumerate() {
+            let vid = self.vids[position.package_index as usize];
+
+            if i != 0 && position.segment_index == 0 {
                 writeln!(out, "#EXT-X-DISCONTINUITY")?;
             }
-            if i == 0 || segment_info.segment_i == 0 {
-                let uri = init.uri(package.vid);
+            if i == 0 || position.segment_index == 0 {
+                // TODO: Merge package specific metadata into one vector
+                let init = &self.inits[position.package_index as usize];
+                let uri = init.uri(vid);
                 writeln!(out, "#EXT-X-MAP:URI=\"{}{uri}\"", config.media_base)?;
             }
 
-            let duration = segment_info.duration.to_seconds(playlist.step_size);
-            writeln!(out, "#EXTINF:{duration:.6}")?;
+            let segment = &self.segments[position.flat_segment_index as usize];
+            let duration =
+                self.durations[position.flat_segment_index as usize].to_seconds(playlist.step_size);
 
-            let uri = segment.src.uri(package.vid);
+            let uri = segment.src.uri(vid);
+            writeln!(out, "#EXTINF:{duration:.6},")?;
             writeln!(out, "{}{uri}", config.media_base)?;
         }
 
@@ -237,8 +281,9 @@ impl Duration {
     }
 
     #[must_use]
-    pub fn modulo(self, base: Duration) -> Duration {
-        Duration(self.0 % base.0)
+    pub fn modulo(self, base: Duration) -> (u64, Duration) {
+        let (quotient, remainder) = self.0.div_mod_floor(&base.0);
+        (quotient, Duration(remainder))
     }
 
     #[must_use]
