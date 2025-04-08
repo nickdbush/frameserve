@@ -4,7 +4,7 @@ use num::rational::Ratio;
 use serde::{Deserialize, Serialize};
 use std::{ffi::OsStr, fmt::Display, fs};
 
-use crate::{inspect::combine_inspect, utils::extract_vid};
+use crate::{config::get_config, inspect::combine_inspect, utils::extract_vid};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Package {
@@ -201,7 +201,7 @@ pub struct ResourceLocator<'resource> {
 
 impl<'a> Display for ResourceLocator<'a> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "/media/{}/{}", self.vid, self.resource.0)
+        write!(f, "/{}/{}", self.vid, self.resource.0)
     }
 }
 

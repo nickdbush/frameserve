@@ -7,19 +7,15 @@ use axum::{
     response::IntoResponse,
     routing::get,
 };
-use frameserve::playout::Playlist;
+use frameserve::{config::get_config, playout::Playlist};
 use jiff::Timestamp;
 use tower_http::{cors::CorsLayer, services::ServeDir};
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
-    let playlist = Playlist::new(Timestamp::UNIX_EPOCH, "packages");
+    let config = get_config();
 
-    // let mut buf = String::new();
-    // playlist.streams[0]
-    // .variant_playlist(&playlist, Timestamp::now(), &mut buf)
-    // .unwrap();
-    // println!("{buf}");
+    let playlist = Playlist::new(Timestamp::UNIX_EPOCH, "packages");
 
     let app_state = AppState::new(playlist);
 
@@ -30,7 +26,7 @@ async fn main() -> io::Result<()> {
         .layer(CorsLayer::permissive())
         .with_state(app_state);
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await?;
+    let listener = tokio::net::TcpListener::bind(&config.bind_address).await?;
     println!("Listening on {}", listener.local_addr()?);
     axum::serve(listener, app).await
 }

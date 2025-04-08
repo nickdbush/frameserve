@@ -8,7 +8,10 @@ use std::{
 use jiff::Unit;
 use num::{integer::lcm, rational::Ratio};
 
-use crate::package::{Package, RemoteResource, Segment, Variant, VariantKind};
+use crate::{
+    config::get_config,
+    package::{Package, RemoteResource, Segment, Variant, VariantKind},
+};
 
 pub struct Playlist {
     packages: Vec<Package>,
@@ -139,6 +142,7 @@ impl Stream {
 
 impl Playlist {
     pub fn master_playlist(&self, out: &mut String) -> fmt::Result {
+        let config = get_config();
         writeln!(out, "#EXTM3U")?;
         for (i, stream) in self.streams.iter().enumerate() {
             let bitrate = stream.bitrate;
@@ -158,7 +162,7 @@ impl Playlist {
                     )?;
                 }
             }
-            writeln!(out, "https://ctrl.caveh.tv/playlists/variant{i}.m3u8")?;
+            writeln!(out, "{}/hls/variant{i}.m3u8", config.base)?;
         }
         Ok(())
     }
@@ -171,6 +175,8 @@ impl Stream {
         now: jiff::Timestamp,
         out: &mut String,
     ) -> fmt::Result {
+        let config = get_config();
+
         writeln!(out, "#EXTM3U")?;
         writeln!(out, "#EXT-X-TARGETDURATION:10")?;
         writeln!(out, "#EXT-X-VERSION:4")?;
@@ -186,14 +192,14 @@ impl Stream {
             }
             if i == 0 || segment_info.segment_i == 0 {
                 let uri = init.uri(package.vid);
-                writeln!(out, "#EXT-X-MAP:URI=\"{uri}\"")?;
+                writeln!(out, "#EXT-X-MAP:URI=\"{}{uri}\"", config.media_base)?;
             }
 
             let duration = segment_info.duration.to_seconds(playlist.step_size);
             writeln!(out, "#EXTINF:{duration:.6}")?;
 
             let uri = segment.src.uri(package.vid);
-            writeln!(out, "{uri}")?;
+            writeln!(out, "{}{uri}", config.media_base)?;
         }
 
         Ok(())

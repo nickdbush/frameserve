@@ -9,6 +9,7 @@ axum = "0.8"
 base64 = "0.22"
 blake3 = { version = "1", features = ["mmap", "serde"] }
 clap = { version = "4", features = ["derive"] }
+figment = { version = "0.10.19", features = ["toml", "env"] }
 jiff = { version = "0.2", features = ["serde"] }
 num = { version = "0.4", features = ["serde"] }
 serde = { version = "1", features = ["derive"] }

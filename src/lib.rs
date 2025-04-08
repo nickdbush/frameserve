@@ -1,3 +1,4 @@
+pub mod config;
 pub mod inspect;
 pub mod package;
 pub mod playout;
