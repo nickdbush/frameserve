@@ -1,13 +1,10 @@
-use std::collections::HashSet;
 use std::fs;
 
 use clap::Parser;
-use frameserve::dynamic::calculate_rd_point;
 use frameserve::inspect::{Profile, inspect};
 use frameserve::package::package;
 use frameserve::recipe::{Pass, VideoSpec, transcode_video};
 use frameserve::utils::extract_vid;
-use frameserve::vmaf::compare_vmaf;
 
 #[derive(Parser)]
 struct Args {
@@ -22,13 +19,6 @@ enum Command {
         #[clap(default_value = "encodes")]
         out_dir: String,
     },
-    Compare {
-        original: String,
-        encode_dir: String,
-    },
-    Compute {
-        original: String,
-    },
     Package {
         dir: String,
     },
@@ -38,12 +28,6 @@ enum Command {
 fn main() {
     let args = Args::parse();
     match args.cmd {
-        Command::Compare {
-            encode_dir,
-            original,
-        } => {
-            compare_vmaf(encode_dir, original).execute();
-        }
         Command::Encode { original, out_dir } => {
             let media_info = inspect(&original);
             media_info.check();
@@ -80,32 +64,6 @@ fn main() {
 
             transcode_video(&original, &media_info, Pass::First, &outputs, &audio_dir).execute();
             transcode_video(&original, &media_info, Pass::Second, &outputs, &audio_dir).execute();
-        }
-        Command::Compute { original } => {
-            let info = inspect(&original);
-            let v = info.video_stream();
-
-            let mut seen_sizes = HashSet::new();
-
-            for (width, height) in [
-                (v.width, v.height),
-                // (1920, 1080),
-                // (1280, 720),
-                // (960, 540),
-                // (640, 360),
-            ] {
-                if !seen_sizes.insert((width, height)) {
-                    continue;
-                }
-
-                if info.video_stream().width < width && info.video_stream().height < height {
-                    continue;
-                }
-
-                for crf in [16, 20, 24, 28, 32, 36] {
-                    calculate_rd_point(&original, width, height, crf).log();
-                }
-            }
         }
         Command::Package { dir } => {
             fs::create_dir_all("segments").unwrap();
