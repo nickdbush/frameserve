@@ -74,7 +74,7 @@ impl Variant {
     }
 }
 
-#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(tag = "kind", content = "info", rename_all = "lowercase")]
 pub enum VariantKind {
     Video { width: u16, height: u16 },
