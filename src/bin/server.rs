@@ -15,7 +15,7 @@ use tower_http::{cors::CorsLayer, services::ServeDir};
 async fn main() -> io::Result<()> {
     let config = get_config();
 
-    let playlist = Playlist::new(Timestamp::UNIX_EPOCH, "packages");
+    let playlist = Playlist::load(Timestamp::now(), "packages");
 
     let app_state = AppState::new(playlist);
 
@@ -54,7 +54,7 @@ async fn hls_variant_playlist(
 
     let mut buffer = String::new();
     stream
-        .variant_playlist(&state.playlist, Timestamp::now(), &mut buffer)
+        .render_variant_playlist(&mut buffer, &state.playlist, Timestamp::now())
         .unwrap();
 
     (

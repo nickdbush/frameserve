@@ -24,6 +24,12 @@ pub struct Config {
     pub bind_address: String,
     pub base: String,
     pub media_base: String,
+    #[serde(default = "default_speed")]
+    pub speed: u64,
+}
+
+fn default_speed() -> u64 {
+    1
 }
 
 pub fn get_config() -> &'static Config {

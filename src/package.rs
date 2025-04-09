@@ -4,7 +4,11 @@ use num::rational::Ratio;
 use serde::{Deserialize, Serialize};
 use std::{ffi::OsStr, fmt::Display, fs};
 
-use crate::{inspect::combine_inspect, utils::extract_vid};
+use crate::{
+    duration::{Duration, StepSize},
+    inspect::combine_inspect,
+    utils::extract_vid,
+};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Package {
@@ -24,7 +28,7 @@ impl Package {
     }
 
     pub fn duration(&self) -> u64 {
-        self.variants[0].duration()
+        self.variants[0].raw_duration()
     }
 }
 
@@ -69,8 +73,12 @@ pub struct Variant {
 }
 
 impl Variant {
-    pub fn duration(&self) -> u64 {
+    pub fn raw_duration(&self) -> u64 {
         self.segments.iter().map(|segment| segment.duration()).sum()
+    }
+
+    pub fn duration(&self, step_size: StepSize) -> Duration {
+        Duration::new(self.raw_duration(), self.time_base, step_size)
     }
 }
 
