@@ -15,7 +15,7 @@ use tower_http::{cors::CorsLayer, services::ServeDir};
 async fn main() -> io::Result<()> {
     let config = get_config();
 
-    let playlist = Playlist::load(Timestamp::now(), "packages");
+    let playlist = Playlist::load(Timestamp::UNIX_EPOCH, "packages");
 
     let app_state = AppState::new(playlist);
 

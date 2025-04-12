@@ -277,7 +277,7 @@ impl Stream {
 
         let mut mapped_vid = None;
 
-        for (i, this) in self.queue(&playhead).take(5).enumerate() {
+        for (i, this) in self.queue(&playhead).take(6).enumerate() {
             for _ in current_discontinuity..this.discontinuity {
                 writeln!(r, "#EXT-X-DISCONTINUITY")?;
             }
@@ -314,7 +314,7 @@ impl Playlist {
                 VariantKind::Video { width, height } => {
                     writeln!(
                         out,
-                        "#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH={},RESOLUTION={}x{},CODECS=\"{}\",AUDIO=\"audio\"",
+                        "#EXT-X-STREAM-INF:BANDWIDTH={},RESOLUTION={}x{},CODECS=\"{}\",AUDIO=\"audio\"",
                         bitrate, width, height, "avc1.64e01f, mp4a.40.2"
                     )?;
                     writeln!(out, "{}/hls/variant{i}.m3u8", config.base)?;
@@ -323,7 +323,7 @@ impl Playlist {
                 VariantKind::Audio => {
                     writeln!(
                         out,
-                        "#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID=\"audio\",LANGUAGE=\"eng\",NAME=\"aac_192\",AUTOSELECT=YES,DEFAULT=YES,URI=\"{}/hls/variant{i}.m3u8\"",
+                        "#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID=\"audio\",LANGUAGE=\"en\",NAME=\"aac_192\",AUTOSELECT=YES,DEFAULT=YES,URI=\"{}/hls/variant{i}.m3u8\"",
                         config.base,
                     )?;
                     writeln!(out)?;
