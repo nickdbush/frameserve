@@ -13,6 +13,7 @@ use crate::{
     config::get_config,
     duration::{Duration, StepSize},
     package::{Package, RemoteResource, Segment, Variant, VariantKind},
+    schedule::{Item, Schedule},
 };
 
 const N_STREAMS: usize = 4;
@@ -23,6 +24,7 @@ pub struct Playlist {
     step: StepSize,
     pub streams: [Stream; N_STREAMS],
     duration: Duration,
+    items: Vec<Item>,
 }
 
 impl Playlist {
@@ -54,6 +56,7 @@ impl Playlist {
         ];
 
         let mut running_playlist_duration = Duration::zero();
+        let mut items = Vec::with_capacity(packages.len());
         for (pi, package) in packages.iter().enumerate() {
             for variant in &package.variants {
                 let stream = streams
@@ -69,7 +72,14 @@ impl Playlist {
                     let start_duration = running_playlist_duration;
                     running_playlist_duration =
                         running_playlist_duration.add(variant.duration(step));
-                    sources.insert(running_playlist_duration, (start_duration, pi));
+                    let end_duration = running_playlist_duration;
+                    sources.insert(end_duration, (start_duration, pi));
+
+                    items.push(Item {
+                        vid: package.vid,
+                        start: start_duration,
+                        duration: end_duration,
+                    });
                 }
 
                 let stream_source =
@@ -90,6 +100,7 @@ impl Playlist {
             step,
             streams,
             duration: running_playlist_duration,
+            items,
         }
     }
 }
@@ -331,5 +342,16 @@ impl Playlist {
             }
         }
         Ok(())
+    }
+}
+
+impl Playlist {
+    pub fn schedule(&self) -> Schedule {
+        Schedule {
+            step: self.step,
+            duration: self.duration,
+            start: self.start,
+            items: self.items.clone(),
+        }
     }
 }

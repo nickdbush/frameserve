@@ -1,7 +1,7 @@
 use std::io;
 
 use axum::{
-    Router,
+    Json, Router,
     extract::{Path, State},
     http::{StatusCode, header},
     response::IntoResponse,
@@ -22,6 +22,7 @@ async fn main() -> io::Result<()> {
     let app = Router::new()
         .route("/hls/index.m3u8", get(hls_index_playlist))
         .route("/hls/{variant}", get(hls_variant_playlist))
+        .route("/schedule", get(playlist_handler))
         .nest_service("/media", ServeDir::new("segments"))
         .layer(CorsLayer::permissive())
         .with_state(app_state);
@@ -62,6 +63,10 @@ async fn hls_variant_playlist(
         buffer,
     )
         .into_response()
+}
+
+async fn playlist_handler(State(state): State<AppState>) -> impl IntoResponse {
+    Json(state.playlist.schedule())
 }
 
 #[derive(Clone)]

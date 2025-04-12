@@ -1,6 +1,7 @@
 use num::{Integer, integer::lcm, rational::Ratio};
+use serde::Serialize;
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Serialize)]
 pub struct StepSize(u64);
 
 impl StepSize {
@@ -13,7 +14,7 @@ impl StepSize {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize)]
 pub struct Duration(u64);
 
 impl Duration {
