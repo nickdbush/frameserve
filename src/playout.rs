@@ -17,6 +17,7 @@ use crate::{
 };
 
 const N_STREAMS: usize = 4;
+const LOOKAHEAD: usize = 16;
 
 pub struct Playlist {
     start: Timestamp,
@@ -288,7 +289,7 @@ impl Stream {
 
         let mut mapped_vid = None;
 
-        for (i, this) in self.queue(&playhead).take(6).enumerate() {
+        for (i, this) in self.queue(&playhead).take(LOOKAHEAD).enumerate() {
             for _ in current_discontinuity..this.discontinuity {
                 writeln!(r, "#EXT-X-DISCONTINUITY")?;
             }
