@@ -16,6 +16,7 @@ struct Args {
 enum Command {
     Encode {
         original: String,
+        vid: Option<u32>,
         #[clap(default_value = "encodes")]
         out_dir: String,
     },
@@ -28,7 +29,11 @@ enum Command {
 fn main() {
     let args = Args::parse();
     match args.cmd {
-        Command::Encode { original, out_dir } => {
+        Command::Encode {
+            original,
+            out_dir,
+            vid,
+        } => {
             let media_info = inspect(&original);
             media_info.check();
 
@@ -51,7 +56,7 @@ fn main() {
                 profile: Profile::Main,
             };
 
-            let vid = extract_vid(&original);
+            let vid = vid.unwrap_or_else(|| extract_vid(&original));
 
             let out_dir = format!("{out_dir}/{vid}");
             let outputs = [
