@@ -33,7 +33,11 @@ impl Playlist {
         let mut packages = Vec::new();
         for entry in fs::read_dir(packages_dir).unwrap() {
             let entry = entry.unwrap();
-            if entry.path().extension() != Some(OsStr::new("json")) {
+            let path = entry.path();
+            if path.extension() != Some(OsStr::new("json")) {
+                continue;
+            }
+            if path.file_name().unwrap().to_str().unwrap().starts_with('_') {
                 continue;
             }
             packages.push(Package::from_file(entry.path().to_str().unwrap()));
