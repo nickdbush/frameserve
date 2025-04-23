@@ -1,5 +1,3 @@
-
-
 FROM lukemathwalker/cargo-chef:latest-rust-1.86 AS chef
 WORKDIR /app
 
@@ -19,4 +17,5 @@ RUN cargo build --release --bin server
 FROM debian:bookworm-slim AS runtime
 WORKDIR /app
 COPY --from=builder /app/target/release/server /usr/local/bin
+COPY --from=builder /app/packages /app/packages
 ENTRYPOINT ["/usr/local/bin/server"] 
