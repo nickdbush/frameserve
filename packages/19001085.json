@@ -1,0 +1,222 @@
+{
+  "vid": 19001085,
+  "packaged_at": "2025-04-21T15:52:49.14377Z",
+  "variants": [
+    {
+      "init_src": "QE-dJGCDVJoplKAGd8GT99TTiyzMf1lZNa5h1a1jgdU.mp4",
+      "time_base": [
+        1,
+        11988
+      ],
+      "bitrate": 400000,
+      "kind": "video",
+      "info": {
+        "width": 960,
+        "height": 540
+      },
+      "segments": [
+        {
+          "src": "HRPDRwNsCDUtFr3m8VTc_mHIm3Qk0TNex2GBmkC8cxQ.mp4",
+          "start": 396,
+          "duration": 120000
+        },
+        {
+          "src": "xk6XnDrfUsBGhVN5dDmP58eBkf-shT51x-GrfmBdBj8.mp4",
+          "start": 120396,
+          "duration": 120000
+        },
+        {
+          "src": "2cKFqokBJNlcZok4wAAhrv4XJkzo2_zv1O-lBysF0wo.mp4",
+          "start": 240396,
+          "duration": 120000
+        },
+        {
+          "src": "F_41sFFlGaYUmLEViqejAUtJvl2J3L_aFmLRmfXm8yM.mp4",
+          "start": 360396,
+          "duration": 120000
+        },
+        {
+          "src": "Wb5DSCWxL5KlIYNNEh74bFJrv6wDHxA42cN9iPtk0no.mp4",
+          "start": 480396,
+          "duration": 120000
+        },
+        {
+          "src": "LM7xUZmmVXyxupi-MJrtdzb8ZmPFf7fW5xtKAgRobN0.mp4",
+          "start": 600396,
+          "duration": 120000
+        },
+        {
+          "src": "yB-g0RPTck8fk1lBRefuQl3hpl8akTihC5QpcmTYew4.mp4",
+          "start": 720396,
+          "duration": 120000
+        },
+        {
+          "src": "OQPBdntZETo2Jj3laUWkVdgEx3PHxBoRK4_EaXc9Tx8.mp4",
+          "start": 840396,
+          "duration": 112000
+        }
+      ]
+    },
+    {
+      "init_src": "7DQbc7cPHFIbVRkxLWzCnmahB6PfdRHaUWvqqfxIDUc.mp4",
+      "time_base": [
+        1,
+        11988
+      ],
+      "bitrate": 1500000,
+      "kind": "video",
+      "info": {
+        "width": 1280,
+        "height": 720
+      },
+      "segments": [
+        {
+          "src": "D7J8qootQ7kMbvzMXIypUSHA5oBjORk827HhlwxolO8.mp4",
+          "start": 396,
+          "duration": 120000
+        },
+        {
+          "src": "BLPvW6XspDHPQ547wUpVU_DsmBYKYdgkQb3ne3bS8tc.mp4",
+          "start": 120396,
+          "duration": 120000
+        },
+        {
+          "src": "L8sGrhHrECCP8chl9IgqKKhF4Up5ZTadVRu25zX6gIc.mp4",
+          "start": 240396,
+          "duration": 120000
+        },
+        {
+          "src": "0Ag45x2mcqn2TAZ1CReqvhCcd5cPrpdzM-U_UrFduJ0.mp4",
+          "start": 360396,
+          "duration": 120000
+        },
+        {
+          "src": "6-aPpvV5n1cMHtLKVRQRT2jQR250DgT6nrwTGCR9YvA.mp4",
+          "start": 480396,
+          "duration": 120000
+        },
+        {
+          "src": "x1fmp-jiaej5xzltobVw-5UrgxD8niFr0rSJ7JQajAs.mp4",
+          "start": 600396,
+          "duration": 120000
+        },
+        {
+          "src": "qdK-RRnipCqoZP6xmTkfo5eZNeZvuvoDWyrk6_PUc9Y.mp4",
+          "start": 720396,
+          "duration": 120000
+        },
+        {
+          "src": "8T7fWLhyFE43VxyXaH6lddkTQ96QHYuveUcjkoPS4LE.mp4",
+          "start": 840396,
+          "duration": 112000
+        }
+      ]
+    },
+    {
+      "init_src": "4opPpwktxDfomwStN-p9h9D1eIvYWKZI67V7pl42v_E.mp4",
+      "time_base": [
+        1,
+        11988
+      ],
+      "bitrate": 5000000,
+      "kind": "video",
+      "info": {
+        "width": 1920,
+        "height": 1080
+      },
+      "segments": [
+        {
+          "src": "GS4gID9VdSpTO0fk_vBscbVH3dIdCvGELBaYAb18OJk.mp4",
+          "start": 396,
+          "duration": 120000
+        },
+        {
+          "src": "XXQIiBUO2JATc9EEnyZOzQUZ7YQeiI3Ogw8VoodY2NA.mp4",
+          "start": 120396,
+          "duration": 120000
+        },
+        {
+          "src": "a2er9KoXrA1tSrxsqykkeKtVrJ1PCduaCCp1WvZOKKw.mp4",
+          "start": 240396,
+          "duration": 120000
+        },
+        {
+          "src": "m9WB6Snhq5Xfu_5i45sEptbviCsBsXNGocs7kVnVSZU.mp4",
+          "start": 360396,
+          "duration": 120000
+        },
+        {
+          "src": "7LlMWuGkeOCbONyzOt9M91yRk3wBYEJtG3It-8zHpck.mp4",
+          "start": 480396,
+          "duration": 120000
+        },
+        {
+          "src": "5IXMWUDdoBXhHMRCqQq0MzA24MTsOrw3sFdE85QsikA.mp4",
+          "start": 600396,
+          "duration": 120000
+        },
+        {
+          "src": "cL494v5N7FQqUFZDfBekYIBRfhAde1z4Hf8dP8Nu0ug.mp4",
+          "start": 720396,
+          "duration": 120000
+        },
+        {
+          "src": "PS1iA9aA8k-SM74fg9u--kR0jrtbRBx2oHUtjHW4IBE.mp4",
+          "start": 840396,
+          "duration": 112000
+        }
+      ]
+    },
+    {
+      "init_src": "myuD38CRCZs30_wkbZ20Kj_Dv0lYQEfw8mKLCP-4rvA.mp4",
+      "time_base": [
+        1,
+        48000
+      ],
+      "bitrate": 192000,
+      "kind": "audio",
+      "segments": [
+        {
+          "src": "dZAuqLp8pqrc-qsIdLbN33byy7W1AipaE-zF23ZSOqk.mp4",
+          "start": 0,
+          "duration": 480256
+        },
+        {
+          "src": "1mf-OOh_Xj7fVAXkq_Urm2HX6WWLqzqR9rApDYFp8Ac.mp4",
+          "start": 480256,
+          "duration": 480256
+        },
+        {
+          "src": "V2qrRT4jTrk_Tii7dZ49bCPV4ZUTrYxY0Zlf3JJQnmM.mp4",
+          "start": 960512,
+          "duration": 480256
+        },
+        {
+          "src": "NzMQ8owC8NWN_kT8yCVRYanBryhVl14wK-IFeO75mII.mp4",
+          "start": 1440768,
+          "duration": 479232
+        },
+        {
+          "src": "ZOjccH2v3rdEgHgtFB3znKGT3RpUNGZIlItu6wzrXuw.mp4",
+          "start": 1920000,
+          "duration": 480256
+        },
+        {
+          "src": "4EEvRjXM8_vVt4TM6o1IWNuQ9lq9-wf3gEq1mZi7EyA.mp4",
+          "start": 2400256,
+          "duration": 480256
+        },
+        {
+          "src": "gSQzjJZ04WE7YSRNCTx7jvaEMdzp6MtboBltWc8NfpU.mp4",
+          "start": 2880512,
+          "duration": 480256
+        },
+        {
+          "src": "yA2teNLrAglPSjeTn_vyjfaMh3wWWNtKRNyqTd_BwLs.mp4",
+          "start": 3360768,
+          "duration": 453696
+        }
+      ]
+    }
+  ]
+}

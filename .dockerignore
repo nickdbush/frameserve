@@ -1,6 +1,5 @@
 /target
 /encodes
-/packages
 /segments
 *.log
 *.mbtree

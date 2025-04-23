@@ -1,6 +1,5 @@
 use std::{
     collections::BTreeMap,
-    ffi::OsStr,
     fmt::{self, Write as _},
     fs,
     ops::Range,
@@ -31,17 +30,16 @@ pub struct Playlist {
 impl Playlist {
     pub fn load(start: Timestamp, packages_dir: &str) -> Self {
         let mut packages = Vec::new();
-        for entry in fs::read_dir(packages_dir).unwrap() {
-            let entry = entry.unwrap();
-            let path = entry.path();
-            if path.extension() != Some(OsStr::new("json")) {
-                continue;
-            }
-            if path.file_name().unwrap().to_str().unwrap().starts_with('_') {
-                continue;
-            }
-            packages.push(Package::from_file(entry.path().to_str().unwrap()));
+
+        let playlist = fs::read_to_string(format!("{packages_dir}/playlist.txt")).unwrap();
+        for line in playlist.lines() {
+            let mut parts = line.split_whitespace();
+            let vid = parts.next().unwrap().parse::<u32>().unwrap();
+            let filename = format!("{packages_dir}/{vid}.json");
+            packages.push(Package::from_file(&filename));
+            println!("Loaded package {vid} from {filename}");
         }
+
         Self::new(start, packages)
     }
 

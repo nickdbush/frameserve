@@ -1,0 +1,162 @@
+{
+  "vid": 73005431,
+  "packaged_at": "2025-04-21T15:54:08.022334Z",
+  "variants": [
+    {
+      "init_src": "W5QVpOh0flh4ZFPNamlfVVHUNgixWQJ9KA80VbrLWT0.mp4",
+      "time_base": [
+        1,
+        11988
+      ],
+      "bitrate": 400000,
+      "kind": "video",
+      "info": {
+        "width": 960,
+        "height": 540
+      },
+      "segments": [
+        {
+          "src": "OuE0CnmbGiJt3GnnKdW6HEEcgvv2Hv_s7i6W66fVU-I.mp4",
+          "start": 396,
+          "duration": 120000
+        },
+        {
+          "src": "7H732cYU3buDUo78-ztLnwq0vd7DCMKIe9wAdX7QO6E.mp4",
+          "start": 120396,
+          "duration": 120000
+        },
+        {
+          "src": "9MDMlqbjzwC9IyGZeO6RgfToYRcXAQaooM-GWsHTUZo.mp4",
+          "start": 240396,
+          "duration": 120000
+        },
+        {
+          "src": "dJaW-YX02_A5giBx5Sdo0h0KhS6mYJ2VgtMcKZ8y1xs.mp4",
+          "start": 360396,
+          "duration": 120000
+        },
+        {
+          "src": "ZhYhAnULsq9XhFu1bw4fHsjZ5Oqua01fA90Qd3j35fw.mp4",
+          "start": 480396,
+          "duration": 104000
+        }
+      ]
+    },
+    {
+      "init_src": "_42ZIEyHzVBkTFn2PPw8omnd76Wm_rN_E3jfzEI855o.mp4",
+      "time_base": [
+        1,
+        11988
+      ],
+      "bitrate": 1500000,
+      "kind": "video",
+      "info": {
+        "width": 1280,
+        "height": 720
+      },
+      "segments": [
+        {
+          "src": "AjjYhE9yH1lhU1x2m_ABRbsUH37vXZcAPVG1BKHhL8M.mp4",
+          "start": 396,
+          "duration": 120000
+        },
+        {
+          "src": "N6f6GlDxHQxvHrwwIkQ44Mnko64kz5Mb9o-Bcpq2Fjg.mp4",
+          "start": 120396,
+          "duration": 120000
+        },
+        {
+          "src": "9015sRtipqMYAsNYaM4xbbmE8ayJn90wq7-CzI5a9S4.mp4",
+          "start": 240396,
+          "duration": 120000
+        },
+        {
+          "src": "CVDIaQZBrufL58chL8KH3q5_wS8vXgnqYnXPCGJOj9w.mp4",
+          "start": 360396,
+          "duration": 120000
+        },
+        {
+          "src": "eL7mhwRWo53OXHK_VvkBjJE-UnYFPJllBdRD5-I5NYM.mp4",
+          "start": 480396,
+          "duration": 104000
+        }
+      ]
+    },
+    {
+      "init_src": "slOiN0gTfBQg2-m1KlIvJ84L-mIR-DCV9pQK3ERxcvQ.mp4",
+      "time_base": [
+        1,
+        11988
+      ],
+      "bitrate": 5000000,
+      "kind": "video",
+      "info": {
+        "width": 1920,
+        "height": 1080
+      },
+      "segments": [
+        {
+          "src": "VciS7v9PShdMc_aXjlP4JPUgC728uvGPumyVVXbqGHs.mp4",
+          "start": 396,
+          "duration": 120000
+        },
+        {
+          "src": "2zqDkKVHcWJqUeXTW_CwlodqqXnRkq_jaoyw4P9MDKE.mp4",
+          "start": 120396,
+          "duration": 120000
+        },
+        {
+          "src": "AvzP1kYvsAW_09mWpYYU5VDzzgtSLj4jV8o5cioIGuc.mp4",
+          "start": 240396,
+          "duration": 120000
+        },
+        {
+          "src": "lOvxBAwlXQjCGEqtpBmEE9tSpDsGRBCJyK0O_spMt4s.mp4",
+          "start": 360396,
+          "duration": 120000
+        },
+        {
+          "src": "Frvcbt5OGPLr6BOgUPW1vljQatZGq0rw0obBSdNIW-E.mp4",
+          "start": 480396,
+          "duration": 104000
+        }
+      ]
+    },
+    {
+      "init_src": "myuD38CRCZs30_wkbZ20Kj_Dv0lYQEfw8mKLCP-4rvA.mp4",
+      "time_base": [
+        1,
+        48000
+      ],
+      "bitrate": 192000,
+      "kind": "audio",
+      "segments": [
+        {
+          "src": "xnFuqpm7eOwB8d21gl82CjjBMHJHGFmmPNfenewvazQ.mp4",
+          "start": 0,
+          "duration": 480256
+        },
+        {
+          "src": "GgQ9qE1Ywp9RFse3IqixQnQwsi1vaWKliO-DMK1AowA.mp4",
+          "start": 480256,
+          "duration": 480256
+        },
+        {
+          "src": "h-UZ49JMX_TcoF1KkimOlo3Gmrk2bAZE71YfgHaa7v0.mp4",
+          "start": 960512,
+          "duration": 480256
+        },
+        {
+          "src": "ujEeILsTvEJS8Fwu5190-vbb2rYG8uKyPdGhAfIraN4.mp4",
+          "start": 1440768,
+          "duration": 479232
+        },
+        {
+          "src": "TRopeElhhynoVfzhWDlDG38Pijnqwz-3uVZwjWDVcY8.mp4",
+          "start": 1920000,
+          "duration": 420928
+        }
+      ]
+    }
+  ]
+}
