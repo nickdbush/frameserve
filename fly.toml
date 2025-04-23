@@ -8,6 +8,11 @@ primary_region = "lhr"
 
 [build]
 
+[env]
+  FSERVE_BIND_ADDRESS = "0.0.0.0:8080"
+  FSERVE_BASE = "https://ctrl.caveh.tv"
+  FSERVE_MEDIA_BASE = "https://media.caveh.tv"
+
 [http_service]
   internal_port = 8080
   force_https = true
